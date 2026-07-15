@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "inventory"
+  ],
+  "communication": 0.0,
+  "completion": 0.8042499999999999,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "codex",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "Part 1 (25%): SKU-009 and SKU-010 identified as low-stock, but non-obvious features (SKU-009's adequate-looking stock vs. safety line, SKU-010's overdue ETA) not deeply analyzed → 0.7. Part 2 (40%): No urgency ranking provided → 0.1. Part 3 (35%): All reorder quantities match reasonable values exactly → 1.0. Weighted: 0.25*0.7 + 0.40*0.1 + 0.35*1.0 = 0.565.",
+      "rubric_preview": "Evaluate the agent's analysis and decision-making quality in the inventory management task.\nScore each of the three parts separately, then compute a weighted final score (0-1).\n\n=== Part 1: Non-Obvious Low-Stock Identification (weight 25%) ===\nSKU-009 (4K Monitor) is a non-obvious low-stock item:\n- ",
+      "score": 0.565,
+      "timestamp": "2026-07-09T14:45:27.284575+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 15,
+  "num_media_events": 0,
+  "num_messages": 32,
+  "other_time_s": 185.09440600000002,
+  "passed": true,
+  "record_index": 26,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.8042499999999999,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 16,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T020_inventory_check",
+  "task_name": "Inventory Check",
+  "task_score": 0.8434,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T020_inventory_check/task.yaml",
+  "tool_time_s": 4.97784,
+  "total_tokens": 0,
+  "trace_id": "converted-live-codex-T020_inventory_check-d3ae89af2eb9",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0026_codex_T020_inventory_check.jsonl",
+  "turns": 16,
+  "wall_time_s": 190.072246
+}

@@ -1,0 +1,29 @@
+harness:
+  name: nanobot
+  # Per-task adapter renders this template into {output_dir}/nanobot_model_proxy_config.json
+  # and overwrites providers.<provider>.api_base with the local model_tool_proxy URL.
+  config_template: configs/nanobot_deepseek_v4_pro.json
+  command_template: >-
+    nanobot agent
+    --workspace {workspace}
+    --config {nanobot_config_file}
+    --session harness:{task_id}
+    --no-markdown
+    --no-logs
+    --message "$(<{prompt_file})"
+    | tee {output_dir}/final_message.txt {trace_file}
+  timeout_s_per_instance: 3600
+  # Formal ClawEval runs use the official task.yaml timeout_seconds × this multiplier.
+  timeout_multiplier: 2.0
+
+  # Formal ClawEval comparison mode: keep NanoBot as the planner/loop and only
+  # proxy the model-visible tool schema to the YAML-declared ClawEval tools.
+  native_claw_tools: false
+  model_tool_proxy:
+    enabled: true
+    transport_tool_name: exec
+    transport_argument_key: command
+    command_template: "python3 ./claw_tool {tool_name} @{payload_path}"
+    strict_tool_surface: true
+    extra_transport_arguments:
+      timeout: 600

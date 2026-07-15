@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "web_real"
+  ],
+  "communication": 0.0,
+  "completion": 0.97,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "nanobot",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "The response covers most key points across all dimensions. D1 missing explicit mention of 'source-available not open-source', D3 missing explicit base version mention, D5 missing explicit configuration compatibility point, but all others fully covered. Weighted average is approximately 0.93.",
+      "rubric_preview": "Evaluate the agent's Redis vs Valkey technical evaluation report by scoring each dimension separately, then compute a weighted average.\n\nFor each dimension, count how many key points are present in the response, then compute: dimension_score = covered_points / total_points.\n\nD1. License analysis (we",
+      "score": 0.93,
+      "timestamp": "2026-07-09T15:40:58.037842+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 66,
+  "num_media_events": 0,
+  "num_messages": 134,
+  "other_time_s": 672.245614,
+  "passed": true,
+  "record_index": 211,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.97,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 67,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T047zh_oss_comparison",
+  "task_name": "开源软件许可证变更评估",
+  "task_score": 0.976,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T047zh_oss_comparison/task.yaml",
+  "tool_time_s": 87.014781,
+  "total_tokens": 0,
+  "trace_id": "converted-live-nanobot-T047zh_oss_comparison-d869bd896fc1",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0211_nanobot_T047zh_oss_comparison.jsonl",
+  "turns": 67,
+  "wall_time_s": 759.260395
+}

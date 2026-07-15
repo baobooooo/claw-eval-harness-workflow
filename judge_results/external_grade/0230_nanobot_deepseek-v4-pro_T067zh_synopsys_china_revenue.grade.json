@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "web_real"
+  ],
+  "communication": 0.0,
+  "completion": 0.96,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "nanobot",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "助手准确提取了所有收入数据（$989.5M、$6,127.4M、$814.3M、$7,054.2M），正确计算占比（16.15%、11.54%）、占比变动（-461 bps）、中国增速（-17.7%）、全球增速（+15.1%）及差异（-32.8 pp），均符合正向评分项1-10。对风险敞口的判断（占比下降暗示收敛）虽未明确表述，但逻辑自洽，第11项可给分。第12-14项完全满足。第15项提及了FY2025 RPO 11.4B（45%）和FY2024 RPO 8.1B，但未给出FY2024的12个月比例（41%），因此略有不足，酌情扣1%权重（共4%）。无负向扣分项。最终得分0.95。",
+      "rubric_preview": "你正在评估一份关于Synopsys中国区收入风险敞口的分析报告。基于以下评分标准逐项打分：\n\n【正向评分项】（满分100%）\n1. [权重12%] FY2024中国区收入：$989.5 million — 数据准确\n2. [权重12%] FY2024全球总收入：$6,127.4 million — 数据准确\n3. [权重12%] FY2025中国区收入：$814.3 million — 数据准确\n4. [权重12%] FY2025全球总收入：$7,054.2 million — 数据准确\n5. [权重6%] FY2024中国收入占比：16.15% — 计算正确\n6. [权重6%] FY2025",
+      "score": 0.95,
+      "timestamp": "2026-07-09T15:45:05.991945+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 44,
+  "num_media_events": 0,
+  "num_messages": 90,
+  "other_time_s": 870.261362,
+  "passed": true,
+  "record_index": 230,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.96,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 45,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T067zh_synopsys_china_revenue",
+  "task_name": "Synopsys中国区收入风险敞口分析",
+  "task_score": 0.968,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T067zh_synopsys_china_revenue/task.yaml",
+  "tool_time_s": 80.886751,
+  "total_tokens": 0,
+  "trace_id": "converted-live-nanobot-T067zh_synopsys_china_revenue-1e726f1e5b1d",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0230_nanobot_T067zh_synopsys_china_revenue.jsonl",
+  "turns": 45,
+  "wall_time_s": 951.148113
+}

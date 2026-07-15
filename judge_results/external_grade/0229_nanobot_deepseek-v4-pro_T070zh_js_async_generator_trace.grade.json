@@ -1,0 +1,52 @@
+{
+  "audit_services": [],
+  "communication": 0.0,
+  "completion": 0.7,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "nanobot",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "回答正确分析了所有关键点：识别scheduler为Thenable、同步阶段日志序列正确、微任务嵌套与队列顺序分析准确、正确解释Inter:1和B:Set:50的交错执行、async generator暂停/恢复机制清晰、指出第4问前提错误并给出正确顺序、正确判断P:A:End不会被打印、分析Proxy set拦截行为、以及p1的value值受Inter:1影响。所有正向评分项均满足，无扣分项。",
+      "rubric_preview": "你正在评估一份关于JavaScript异步生成器与Proxy微任务执行顺序的分析报告。基于以下评分标准逐项打分：\n\n【正向评分项】（满分100%）\n1. [权重15%] 识别scheduler是Thenable对象（有then方法）而非原生Promise — 这是理解await行为的关键\n2. [权重15%] 正确给出同步阶段执行序列：Global:Init → P:A:Start → Sched:Then → P:B:Start → Sched:Then → Global:End\n3. [权重13%] 正确分析微任务调度层级：Promise.resolve().then 与 queueMic",
+      "score": 1.0,
+      "timestamp": "2026-07-09T15:44:28.982108+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 291.000788,
+  "num_dispatches": 0,
+  "num_media_events": 0,
+  "num_messages": 2,
+  "other_time_s": 291.000788,
+  "passed": true,
+  "record_index": 229,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.7,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 1,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T070zh_js_async_generator_trace",
+  "task_name": "JS异步生成器与微任务执行顺序追踪",
+  "task_score": 0.76,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T070zh_js_async_generator_trace/task.yaml",
+  "tool_time_s": 0.0,
+  "total_tokens": 0,
+  "trace_id": "converted-live-nanobot-T070zh_js_async_generator_trace-9e9984946523",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0229_nanobot_T070zh_js_async_generator_trace.jsonl",
+  "turns": 1,
+  "wall_time_s": 291.000788
+}

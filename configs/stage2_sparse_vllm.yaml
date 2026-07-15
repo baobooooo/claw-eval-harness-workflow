@@ -1,0 +1,47 @@
+stage:
+  name: stage2_sparse_vllm
+  infer_backend: sparsevllm
+  port: 8001
+
+codex:
+  # Sparse-vLLM native server currently exposes chat/completions.
+  # Codex full workflow needs /v1/responses. Use preflight before running Codex.
+  model_provider_id: local_sparsevllm
+  base_url: http://127.0.0.1:8001/v1
+  wire_api: responses
+
+sparsevllm:
+  host: 0.0.0.0
+  port: 8001
+  request_log_dir_name: sparse_request_logs
+  engine_kwargs:
+    tensor_parallel_size: 1
+    gpu_memory_utilization: 0.90
+    max_model_len: 32768
+    sparse_method: vanilla
+    engine_prefill_chunk_size: 4096
+    max_num_batched_tokens: 8192
+    max_num_seqs_in_batch: 1
+    max_decoding_seqs: 1
+    throughput_log_interval_s: 5.0
+  optional_sparse_methods:
+    quest:
+      sparse_method: quest
+      quest_chunk_size: 16
+      quest_token_budget: 2048
+      quest_skip_layers: 2
+    omnikv:
+      sparse_method: omnikv
+      sink_keep_tokens: 8
+      recent_keep_tokens: 128
+      decode_keep_tokens: 2048
+      full_attention_layers: "0,1,2,4,7,14"
+    deltakv:
+      # Note: upstream Sparse-vLLM OpenAI server rejects deltakv serving method in this branch.
+      sparse_method: deltakv
+      deltakv_checkpoint_path: /data1/zjq/model_weights/deltakv_compressor
+      deltakv_latent_dim: 256
+      sink_keep_tokens: 8
+      recent_keep_tokens: 128
+      decode_keep_tokens: 1024
+      full_attention_layers: "0,1,2,4,7,14"

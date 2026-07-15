@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "harness-eval-refactored"
+version = "0.2.0"
+description = "Benchmark × harness × model runner for SWE-bench and Claw-Eval/OpenClaw experiments"
+requires-python = ">=3.10"
+dependencies = [
+  "datasets>=2.18",
+  "PyYAML>=6.0",
+  "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+monitor = ["pyzmq>=25.0"]
+analysis = ["pandas>=2.0"]
+bridge = ["fastapi>=0.110", "uvicorn>=0.27", "requests>=2.31"]
+all = [
+  "pyzmq>=25.0",
+  "pandas>=2.0",
+  "fastapi>=0.110",
+  "uvicorn>=0.27",
+  "requests>=2.31",
+]
+
+[project.scripts]
+harness-eval = "harness_eval.run:main"
+harness-trajectory = "harness_eval.analysis.trajectory:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

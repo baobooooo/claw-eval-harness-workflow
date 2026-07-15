@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "ocr_t53"
+  ],
+  "communication": 0.0,
+  "completion": 0.0,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "nanobot",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "The assistant did not extract data, perform regression, or provide an answer. It only output a configuration message and an incomplete statement, failing all parts of the rubric.",
+      "rubric_preview": "Evaluate the agent's statistical methodology in computing the Zipf exponent for state unemployment insurance tax receipts from the 2020 Treasury Bulletin.\nThe correct answer is 1.172 (Zipf exponent rounded to 3 decimal places).\nScore each of the three parts separately, then compute a weighted final ",
+      "score": 0.0,
+      "timestamp": "2026-07-09T15:46:53.629219+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 11,
+  "num_media_events": 0,
+  "num_messages": 24,
+  "other_time_s": 237.61780699999997,
+  "passed": false,
+  "record_index": 240,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.0,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 12,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T079_officeqa_zipf_exponent",
+  "task_name": "OfficeQA: Zipf Exponent for Unemployment Insurance (2020)",
+  "task_score": 0.2,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T079_officeqa_zipf_exponent/task.yaml",
+  "tool_time_s": 402.97807,
+  "total_tokens": 0,
+  "trace_id": "converted-live-nanobot-T079_officeqa_zipf_exponent-30294f9a7184",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0240_nanobot_T079_officeqa_zipf_exponent.jsonl",
+  "turns": 12,
+  "wall_time_s": 640.595877
+}

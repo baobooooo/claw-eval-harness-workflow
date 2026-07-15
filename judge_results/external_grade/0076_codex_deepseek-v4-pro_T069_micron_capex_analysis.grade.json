@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "web_real"
+  ],
+  "communication": 0.0,
+  "completion": 0.59,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "codex",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "Positive items: accurate OCF ($17.5B) +13%, breakeven revenue ($42.6B) +10%, NAND reduction 10% +9%, HBM packaging capex +6%, structural argument for discipline +7%. Total positive 45%. Subtotal 45/100. Deductions: incorrect mathematical calculations (used gross capex instead of net, wrong FCF and coverage ratio) -4%. Net 41/100 = 0.41. Items 2,3,4 not earned due to incorrect data; items 7,9,10 not addressed.",
+      "rubric_preview": "Evaluate the Micron FY2025 CapEx analysis report against the following rubric:\n\nPOSITIVE SCORING ITEMS (total 100%):\n1. [Weight 13%] FY2025 Operating Cash Flow of $17.5 billion — accurate data extraction\n2. [Weight 13%] FY2025 Net Capital Expenditure of $13.8 billion — accurate data extraction\n3. [W",
+      "score": 0.41,
+      "timestamp": "2026-07-09T14:58:51.971335+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 74,
+  "num_media_events": 0,
+  "num_messages": 150,
+  "other_time_s": 1286.840021,
+  "passed": false,
+  "record_index": 76,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.59,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 75,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T069_micron_capex_analysis",
+  "task_name": "Micron FY2025 CapEx Cash Flow Analysis",
+  "task_score": 0.672,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T069_micron_capex_analysis/task.yaml",
+  "tool_time_s": 226.86125,
+  "total_tokens": 0,
+  "trace_id": "converted-live-codex-T069_micron_capex_analysis-3ce04bfdd64c",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0076_codex_T069_micron_capex_analysis.jsonl",
+  "turns": 75,
+  "wall_time_s": 1513.701271
+}

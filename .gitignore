@@ -1,0 +1,22 @@
+# Large or generated artifacts
+external/
+data/
+runs/
+logs/
+*.log
+*.pid
+*.tmp
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store
+
+# Model weights must never be committed
+model_weights/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+src/*.egg-info/

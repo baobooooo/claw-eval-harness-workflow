@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "web_real"
+  ],
+  "communication": 0.0,
+  "completion": 0.83,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "codex",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "D1(license): All 4 points covered, score=1.0. D2(Valkey background): All 4 points covered, score=1.0. D3(technical): All 4 points covered, score=1.0. D4(cloud vendor): Only covered AWS ElastiCache (missing MemoryDB) and Google Memorystore, 1.5/2=0.75. D5(migration): Covered compatible protocol and config, but not the point about Redis-specific module unavailability, 2/3≈0.667. D6(community health): All 3 points covered, score=1.0. D7(recommendation): Report was truncated before reaching the recommendation section; no clear migration advice provided, 0/2=0. Weighted sum: 0.15*1.0+0.12*1.0+0.15*1.0+0.12*0.75+0.10*0.667+0.08*1.0+0.28*0 = 0.6567 ≈ 0.66.",
+      "rubric_preview": "Evaluate the agent's Redis vs Valkey technical evaluation report by scoring each dimension separately, then compute a weighted average.\n\nFor each dimension, count how many key points are present in the response, then compute: dimension_score = covered_points / total_points.\n\nD1. License analysis (we",
+      "score": 0.66,
+      "timestamp": "2026-07-09T14:53:42.739551+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 36,
+  "num_media_events": 0,
+  "num_messages": 74,
+  "other_time_s": 503.098725,
+  "passed": true,
+  "record_index": 52,
+  "robustness": 0.5,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.83,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 37,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 0.5,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T047zh_oss_comparison",
+  "task_name": "开源软件许可证变更评估",
+  "task_score": 0.764,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T047zh_oss_comparison/task.yaml",
+  "tool_time_s": 73.196848,
+  "total_tokens": 0,
+  "trace_id": "converted-live-codex-T047zh_oss_comparison-2a13e82d38a1",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0052_codex_T047zh_oss_comparison.jsonl",
+  "turns": 37,
+  "wall_time_s": 576.295573
+}

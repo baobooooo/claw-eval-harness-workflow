@@ -1,0 +1,11 @@
+Smoke instance IDs sampled from records/claweval_general_ids.txt:
+T161zh_automation_failure_recovery
+T033zh_ops_review_dashboard
+T044_service_outage_research
+
+Completed before stop:
+- codex: 3/3
+- nanobot: 3/3
+- openclaw: 2/3
+
+Detailed run outputs are excluded from this package by request.

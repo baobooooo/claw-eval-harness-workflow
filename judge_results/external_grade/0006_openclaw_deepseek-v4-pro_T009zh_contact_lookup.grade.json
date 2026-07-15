@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "contacts"
+  ],
+  "communication": 0.0,
+  "completion": 0.755,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "openclaw",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "Agent直接返回了正确的张伟（高级工程师），但没有展示任何消歧义过程：未列出搜索结果中的多个相似姓名（如张维），未区分同部门同音干扰项，也未说明为何选择此联系人。虽然推荐结果正确，但缺乏有效的消歧义处理，不符合用户明确查询'技术部张伟'时可能存在的混淆场景。",
+      "rubric_preview": "评估agent在面对多个相似姓名的搜索结果时，消歧义的质量。\n\n背景：用户查找\"技术部张伟\"的联系方式。搜索结果包含多个相似姓名：\n- 张伟 (c_001, 技术部, 高级工程师) — 正确目标\n- 张维 (c_007, 技术部, 初级工程师) — 同音干扰项，同部门\n- 张卫、张薇、张伟东等 — 其他相似名字\n\n消歧义的关键考察点：\n1. 是否列出了多个搜索结果，让用户了解有同名/近似名的人\n2. 是否明确区分了张伟(高级工程师)和张维(初级工程师)这两个同部门的人\n3. 是否清楚地推荐了正确的张伟(c_001)，而不是张维(c_007)\n4. 是否使用了部门筛选来主动缩小范围\n5. 是否提",
+      "score": 0.3,
+      "timestamp": "2026-07-09T14:41:14.288902+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 1,
+  "num_media_events": 0,
+  "num_messages": 4,
+  "other_time_s": 441.910161,
+  "passed": true,
+  "record_index": 6,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.755,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 2,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T009zh_contact_lookup",
+  "task_name": "Contact Lookup",
+  "task_score": 0.804,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T009zh_contact_lookup/task.yaml",
+  "tool_time_s": 0.236378,
+  "total_tokens": 0,
+  "trace_id": "converted-live-openclaw-T009zh_contact_lookup-d0fbcfd486d6",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0006_openclaw_T009zh_contact_lookup.jsonl",
+  "turns": 2,
+  "wall_time_s": 442.146539
+}

@@ -1,0 +1,34 @@
+harness:
+  name: openclaw
+  # Current OpenClaw CLI does not accept --cwd or a workspace positional
+  # argument. The adapter starts this command from the live-bridge driver
+  # workspace, which contains only ./claw_* helpers and policy metadata.
+  # In proxy mode the adapter creates a per-instance OpenClaw profile and
+  # models.json whose baseUrl points at the local model_tool_proxy.
+  command_template: >-
+    openclaw{openclaw_profile_arg} agent
+    --local
+    --model {openclaw_model}
+    --message-file {prompt_file}
+    --session-key agent:openclaw:{task_id}
+    --timeout {timeout_s}
+    --json
+    | tee {output_dir}/final_message.txt {trace_file}
+  timeout_s_per_instance: 3600
+  # Formal ClawEval runs use the official task.yaml timeout_seconds × this multiplier.
+  timeout_multiplier: 2.0
+
+  # Formal ClawEval comparison mode: keep OpenClaw as the planner/loop and only
+  # proxy the model-visible tool schema to the YAML-declared ClawEval tools.
+  native_claw_tools: false
+  model_tool_proxy:
+    enabled: true
+    transport_tool_name: exec
+    transport_argument_key: command
+    command_template: "python3 {claw_tool_path} {tool_name} @{absolute_payload_path}"
+    strict_tool_surface: true
+    # Keep hidden exec transport synchronous so model history receives only the Claw tool result.
+    extra_transport_arguments:
+      background: false
+      yieldMs: 600000
+      timeout: 600

@@ -1,0 +1,70 @@
+{
+  "audit_services": [
+    "config",
+    "helpdesk",
+    "scheduler"
+  ],
+  "communication": 0.0,
+  "completion": 0.94,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "codex",
+  "judge_call_count": 3,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "所有6个工单的SLA判断均正确：TK-701达标，TK-702超标，TK-703达标，TK-704识别为临界状态（差5分钟达标），TK-705达标，TK-706被正确处理为内部工单并说明豁免情况。计算精确，无遗漏或错误，完全符合严格评分标准。",
+      "rubric_preview": "评估助手的SLA达标/超标判断准确性（0.0-1.0）。\n\n## SLA标准（来自INT-901配置）\n- critical: 60分钟内响应\n- high: 240分钟（4小时）内响应\n- medium: 480分钟（8小时）内响应\n- low: 1440分钟（24小时）内响应\n\n## 正确判断\n1. TK-701 critical: 创建08:00, 响应08:35 = 35分钟 → ✓达标\n2. TK-702 high: 创建3/24 10:00, 响应3/24 16:30 = 390分钟(6.5小时) → ✗超标（超出2.5小时）\n3. TK-703 medium: 创建3/24 14",
+      "score": 1.0,
+      "timestamp": "2026-07-09T15:17:20.792628+00:00"
+    },
+    {
+      "method": "evaluate",
+      "reasoning": "完整识别了因果链：JOB-902连续8次失败→根因INT-902 OAuth token过期→导致TK-702在3/24 10:00创建后未触发告警→实际响应390min超标62.5%。量化了失败次数（8次）和起始时间（3/24 08:00），并区分了其他正常运行的自动化任务。符合0.9-1.0评分标准。",
+      "rubric_preview": "评估助手对自动化故障的根因分析深度（0.0-1.0）。\n\n## 必须发现的因果链\n1. JOB-902（SLA超时告警）从2026-03-24 08:00开始失败\n2. 错误信息：\"邮件服务连接失败: SMTP timeout\"\n3. 已连续失败8次\n4. 根因：INT-902（邮件通知集成）的OAuth token过期\n5. 影响：TK-702在3/24 10:00创建后，本应在超时前收到告警，但因JOB-902失败未能告警\n6. JOB-901(自动分配)和JOB-903(日报)运行正常，不受影响\n\n## 严格评分\n- 0.9-1.0: 完整因果链(JOB-902→INT-902→TK-7",
+      "score": 1.0,
+      "timestamp": "2026-07-09T15:17:26.396181+00:00"
+    },
+    {
+      "method": "evaluate",
+      "reasoning": "助理的改进建议包含了4项必须建议：修复INT-902的OAuth授权（紧急）、利用INT-903作为备用通知渠道、关注TK-704临界状态、建立多通道告警机制。但缺少明确要求'TK-702需要立即升级处理'的表述，仅建议复盘。整体建议清晰且可操作，故评0.8。",
+      "rubric_preview": "评估改进建议的质量和可执行性（0.0-1.0）。\n\n## 必须包含的建议\n1. 紧急：修复INT-902的OAuth授权（具体操作）\n2. 短期：利用INT-903(即时消息webhook)作为备用通知渠道\n3. TK-704处于临界状态（差5分钟超标），需要关注响应效率\n4. 建立多通道告警机制，避免单点故障\n5. TK-702需要立即升级处理（已超SLA）\n\n## 严格评分\n- 0.9-1.0: 5项建议全部包含，具有可操作性\n- 0.7-0.8: 包含4项，逻辑清晰\n- 0.5-0.6: 包含2-3项关键建议\n- 0.3-0.4: 建议过于笼统\n- 0.0-0.2: 未给出有效建议\n",
+      "score": 0.8,
+      "timestamp": "2026-07-09T15:17:39.165794+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 28,
+  "num_media_events": 0,
+  "num_messages": 58,
+  "other_time_s": 281.43219700000003,
+  "passed": true,
+  "record_index": 144,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.94,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 29,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T141zh_sla_compliance_audit",
+  "task_name": "SLA合规审查与自动化诊断",
+  "task_score": 0.952,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T141zh_sla_compliance_audit/task.yaml",
+  "tool_time_s": 11.476211,
+  "total_tokens": 0,
+  "trace_id": "converted-live-codex-T141zh_sla_compliance_audit-0c7a6313839d",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0144_codex_T141zh_sla_compliance_audit.jsonl",
+  "turns": 29,
+  "wall_time_s": 292.908408
+}

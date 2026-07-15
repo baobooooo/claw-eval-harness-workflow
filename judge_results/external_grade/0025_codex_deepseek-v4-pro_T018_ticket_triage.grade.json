@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "helpdesk"
+  ],
+  "communication": 0.0,
+  "completion": 0.9800000000000001,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "codex",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "Part 1 (30%): All tickets classified correctly with reasonable priorities. CRM system faults, hardware, network, service requests, and other categories are appropriately assigned. Minor: TK-1009 placed under 'CRM cluster' heading but correctly tagged as training and low priority, so classification is fine. Score 1.0.\nPart 2 (45%): Clearly identified TK-1001, TK-1003, TK-1006 as related, stated root cause (auth failure), and used related tags—matches top criteria. Score 1.0.\nPart 3 (25%): TK-1009 was distinguished by low priority and training tag, but not explicitly stated as unrelated to the system fault; placed under same header. Slightly below top tier due to lack of explicit exclusion. Score 0.8.\nWeighted: 0.3*1.0 + 0.45*1.0 + 0.25*0.8 = 0.95.",
+      "rubric_preview": "Evaluate the agent's ability to classify tickets, group related ones, and identify the red herring.\nScore each of the three parts separately, then compute a weighted final score (0-1).\n\n=== Part 1: Ticket Classification Quality (weight 30%) ===\nThe 10 tickets should be classified by category:\n- CRM-",
+      "score": 0.95,
+      "timestamp": "2026-07-09T14:45:13.914382+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 23,
+  "num_media_events": 0,
+  "num_messages": 48,
+  "other_time_s": 237.51598,
+  "passed": true,
+  "record_index": 25,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.9800000000000001,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 24,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T018_ticket_triage",
+  "task_name": "Ticket Triage",
+  "task_score": 0.984,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T018_ticket_triage/task.yaml",
+  "tool_time_s": 11.985951,
+  "total_tokens": 0,
+  "trace_id": "converted-live-codex-T018_ticket_triage-78f711c96d57",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0025_codex_T018_ticket_triage.jsonl",
+  "turns": 24,
+  "wall_time_s": 249.501931
+}

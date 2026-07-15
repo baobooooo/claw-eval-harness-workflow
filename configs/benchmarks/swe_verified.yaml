@@ -1,0 +1,15 @@
+benchmark:
+  name: swe
+  dataset_name: princeton-nlp/SWE-bench_Verified
+  split: test
+  max_instances: 3
+  prompt_template: configs/prompts/codex_swebench_prompt.md
+
+swebench:
+  dataset_name: princeton-nlp/SWE-bench_Verified
+  split: test
+  max_instances: 3
+  max_workers_eval: 8
+  cache_level: env
+  clean_eval: false
+  predictions_name: harness_eval_predictions.jsonl

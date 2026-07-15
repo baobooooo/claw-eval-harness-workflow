@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Codex SWE-bench Instance Manifest",
+  "type": "object",
+  "required": ["instance_id", "stage", "infer_backend", "model", "status", "started_at"],
+  "properties": {
+    "instance_id": {"type": "string"},
+    "repo": {"type": "string"},
+    "base_commit": {"type": "string"},
+    "stage": {"type": "string"},
+    "infer_backend": {"type": "string"},
+    "model": {"type": "string"},
+    "model_path": {"type": "string"},
+    "status": {"type": "string"},
+    "codex_returncode": {"type": ["integer", "null"]},
+    "duration_s": {"type": ["number", "null"]},
+    "patch_bytes": {"type": ["integer", "null"]},
+    "patch_sha256": {"type": ["string", "null"]},
+    "codex_command": {"type": ["string", "null"]},
+    "prompt_sha256": {"type": ["string", "null"]},
+    "prediction_file": {"type": ["string", "null"]},
+    "started_at": {"type": "string"},
+    "finished_at": {"type": ["string", "null"]},
+    "error_type": {"type": ["string", "null"]},
+    "error": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}

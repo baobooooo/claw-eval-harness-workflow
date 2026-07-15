@@ -1,0 +1,15 @@
+model = "{{SERVED_MODEL_NAME}}"
+model_provider = "{{MODEL_PROVIDER_ID}}"
+model_context_window = {{MODEL_CONTEXT_WINDOW}}
+approval_policy = "{{APPROVAL_POLICY}}"
+sandbox_mode = "{{SANDBOX_MODE}}"
+web_search = "disabled"
+
+[model_providers.{{MODEL_PROVIDER_ID}}]
+name = "{{MODEL_PROVIDER_NAME}}"
+env_key = "{{ENV_KEY}}"
+base_url = "{{BASE_URL}}"
+wire_api = "{{WIRE_API}}"
+
+[sandbox_workspace_write]
+network_access = false

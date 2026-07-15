@@ -1,0 +1,19 @@
+benchmark:
+  name: openclaw
+  jsonl: data/sample_claw_eval.jsonl
+  split: test
+  max_instances: 1
+  prompt_template: configs/prompts/openclaw_harness_prompt.md
+  fixture_root: data/claw_eval_fixtures
+  tasks_dir: data/claw_eval_tasks
+  live_tool_bridge: true
+  # Smoke/production service startup guardrails.  We never silently reuse a healthy service from a previous instance.
+  service_ready_timeout_default: 30
+  service_ready_timeout_min: 30
+  service_ready_timeout_max: 120
+  service_health_timeout: 3
+  service_reset_timeout: 10
+  reuse_healthy_services: false
+  kill_existing_services_on_port: true
+  # sample可以在没有Docker/官方claw_eval包时用host fallback做本地smoke；正式实验不要打开。
+  allow_host_sandbox_fallback: true

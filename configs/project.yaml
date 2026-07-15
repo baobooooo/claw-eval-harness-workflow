@@ -1,0 +1,39 @@
+# Portable defaults.  Relative paths are resolved from this checkout root.
+project:
+  root: .
+  data_root: data
+  runs_root: runs
+  external_root: external
+  mamba_env_name: drift
+
+# Legacy local-serving defaults kept so the original scripts still work.
+model:
+  served_model_name: qwen3-30b-a3b
+  model_path: ${QWEN3_30B_MOE_PATH:-/data1/zjq/model_weights/Qwen3-30B-A3B-modelscope}
+  model_root: ${MODEL_ROOT:-/data1/zjq/model_weights}
+  dtype: bfloat16
+  context_window: 32768
+
+agent:
+  clone_strategy: fetch_commit
+  fetch_commit_fallback_to_mirror: false
+  git_clone_retries: 3
+  git_http_low_speed_limit: 1024
+  git_http_low_speed_time: 120
+  github_url_prefix: "${GITHUB_URL_PREFIX:-https://ghproxy.net}"
+  repo_update_mirror: false
+  run_tests_inside_codex: false
+  max_changed_files_warning: 25
+  remove_prompt_artifacts_before_diff: true
+  validate_generated_patch: true
+  py_compile_changed_python: true
+  codex_generation_attempts: 4
+
+observability:
+  metrics_url: http://127.0.0.1:8000/metrics
+  metrics_scrape_interval_s: 2.0
+  kv_events_endpoint: tcp://127.0.0.1:5557
+  raw_metrics: true
+  raw_kv_events: true
+  nvidia_smi_interval_s: 2
+  module_timeline_keep_raw_event: true

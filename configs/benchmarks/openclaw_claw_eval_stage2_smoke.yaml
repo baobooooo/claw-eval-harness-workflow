@@ -1,0 +1,31 @@
+benchmark:
+  name: openclaw
+  dataset_name: claw-eval/Claw-Eval
+  split: general
+  max_instances: 1
+  prompt_template: configs/prompts/openclaw_harness_prompt.md
+  fixture_root: data/claw_eval_fixtures
+  # Strict方案B：外部agent只跑loop；所有Claw-Eval工具实时走bridge -> ToolDispatcher/SandboxToolDispatcher。
+  live_tool_bridge: true
+  # 正式实验建议true：没有官方Docker SandboxRunner就直接失败，避免退化成host fallback。
+  require_official_claw_sandbox: true
+  # Smoke/production service startup guardrails.  We never silently reuse a healthy service from a previous instance.
+  service_ready_timeout_default: 30
+  service_ready_timeout_min: 30
+  service_ready_timeout_max: 120
+  service_health_timeout: 3
+  service_reset_timeout: 10
+  reuse_healthy_services: false
+  kill_existing_services_on_port: true
+  sandbox:
+    image: claw-eval-agent:latest
+    memory_limit: 4g
+    cpu_limit: 2.0
+    sandbox_port: 8080
+  eval_command: >-
+    PYTHONPATH={claw_eval_root}/src:$PYTHONPATH
+    python -m claw_eval_harness_mode.grade
+    --predictions {predictions}
+    --tasks-dir {tasks_dir}
+    --out-dir {eval_dir}
+    --config {project_root}/configs/claw_eval_deepseek_judge.yaml

@@ -1,0 +1,100 @@
+# Model profiles.  The runner never calls models directly; it passes this
+# endpoint/profile to Codex, nanobot, or OpenClaw so the same model can be tested
+# under different harnesses.
+models:
+  local_serverllm_qwen3_30b_moe:
+    provider: local_serverllm
+    model: qwen3-30b-a3b
+    base_url: ${SERVERLLM_BASE_URL:-http://127.0.0.1:8000/v1}
+    api_key_env: VLLM_API_KEY
+    api_key_value: ${VLLM_API_KEY:-dummy}
+    protocol: openai_chat
+    context_window: 32768
+    max_output_tokens: 8192
+    notes: Local ServerLLM/vLLM-compatible Qwen3 30B MoE endpoint.
+
+  local_serverllm_qwen3_30b_moe_responses:
+    provider: local_serverllm
+    model: qwen3-30b-a3b
+    base_url: ${SERVERLLM_RESPONSES_BASE_URL:-http://127.0.0.1:8011/v1}
+    api_key_env: VLLM_API_KEY
+    api_key_value: ${VLLM_API_KEY:-dummy}
+    protocol: openai_responses
+    context_window: 32768
+    max_output_tokens: 8192
+    notes: Same local model through the included Responses-to-chat bridge.
+
+  local_sparsevllm_qwen3_30b_moe:
+    provider: local_sparsevllm
+    model: qwen3-30b-a3b
+    base_url: ${SPARSEVLLM_BASE_URL:-http://127.0.0.1:8001/v1}
+    api_key_env: VLLM_API_KEY
+    api_key_value: ${VLLM_API_KEY:-dummy}
+    protocol: openai_chat
+    context_window: 32768
+    max_output_tokens: 8192
+    notes: SparseLLM/Sparse-vLLM-compatible local Qwen3 30B MoE endpoint.
+
+  deepseek_v4_pro:
+    provider: deepseek
+    model: deepseek-v4-pro
+    base_url: ${DEEPSEEK_HARNESS_BASE_URL:-http://127.0.0.1:8012/v1}
+    api_key_env: DEEPSEEK_API_KEY
+    protocol: openai_responses
+    context_window: 1000000
+    max_output_tokens: 32768
+    notes: DeepSeek V4 Pro API profile through the shared responses-to-chat bridge.
+
+  deepseek_v4_flash:
+    provider: deepseek
+    model: deepseek-v4-flash
+    base_url: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com/v1}
+    api_key_env: DEEPSEEK_API_KEY
+    protocol: openai_chat
+    context_window: 1000000
+    max_output_tokens: 32768
+    notes: DeepSeek V4 Flash API profile.
+
+  kimi_k2_7_code:
+    provider: moonshot
+    model: kimi-k2.7-code
+    base_url: ${MOONSHOT_BASE_URL:-https://api.moonshot.cn/v1}
+    api_key_env: MOONSHOT_API_KEY
+    protocol: openai_chat
+    context_window: 262144
+    max_output_tokens: 32768
+    notes: Moonshot Kimi K2.7 Code API profile.
+
+  kimi_code_latest_stable:
+    provider: kimi
+    model: kimi-for-coding
+    base_url: ${KIMI_CODE_BASE_URL:-https://api.kimi.com/coding/v1}
+    api_key_env: KIMI_API_KEY
+    protocol: openai_chat
+    context_window: 262144
+    max_output_tokens: 32768
+    notes: Stable Kimi Code model alias that provider maps to the latest coding backend.
+
+  minimax_m3:
+    provider: minimax
+    model: MiniMax-M3
+    base_url: ${MINIMAX_BASE_URL:-https://api.minimax.io/v1}
+    api_key_env: MINIMAX_API_KEY
+    protocol: openai_chat
+    context_window: 1000000
+    max_output_tokens: 65536
+    extra_body:
+      reasoning_split: true
+    notes: MiniMax M3 profile for agentic reasoning/tool-use/coding.
+
+  mimo_v2_5_pro:
+    provider: mimo
+    model: mimo-v2.5-pro
+    base_url: ${MIMO_BASE_URL:-https://api.xiaomimimo.com/v1}
+    api_key_env: MIMO_API_KEY
+    protocol: openai_chat
+    context_window: 1000000
+    max_output_tokens: 65536
+    extra_headers:
+      api-key: ${MIMO_API_KEY:-}
+    notes: Xiaomi MiMo V2.5 Pro API profile.

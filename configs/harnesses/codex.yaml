@@ -1,0 +1,44 @@
+harness:
+  name: codex
+  executable: ${CODEX_EXECUTABLE:-codex}
+  model_provider_id: harness_eval_provider
+  wire_api: null
+
+  # In strict live-bridge mode, Codex only operates in a driver workspace that
+  # contains ./claw_* helpers.  The real scored task state is isolated behind the
+  # official Claw-Eval Docker sandbox, so avoid Codex's nested bwrap sandbox by
+  # default; it can fail inside VM/container smoke environments with
+  # "bwrap: loopback: Failed RTM_NEWADDR" before any bridge call is made.
+  sandbox_mode: danger-full-access
+  live_sandbox_mode: danger-full-access
+  sandbox_network_access: false
+  approval_policy: never
+  extra_args:
+    - --json
+  timeout_s_per_instance: 3600
+  # Formal ClawEval runs use the official task.yaml timeout_seconds × this multiplier.
+  timeout_multiplier: 2.0
+  preserve_codex_home: true
+  disable_web_search: true
+
+  # Keep this false for formal experiments.  It does not make native tools part
+  # of the scored surface; it only controls whether the adapter relaxes its
+  # driver-workspace guardrails.
+  allow_native_tool_bypass: false
+
+  # Keep model-visible prompts aligned with Claw-Eval MiniHarness. Tool routing
+  # happens after model-visible YAML tool calls and is not described to the model.
+  prepend_tool_call_contract: false
+  # Formal ClawEval comparison mode:
+  # - false keeps Codex CLI as the agent loop (planning/context/memory remain Codex-owned).
+  # - the local model_tool_proxy below makes only the YAML-declared ClawEval
+  #   tools visible to DeepSeek and rewrites those calls into Codex exec_command calls
+  #   that execute ./claw_tool in the driver workspace.
+  native_claw_tools: false
+  model_tool_proxy:
+    enabled: true
+    transport_tool_name: exec_command
+    transport_argument_key: cmd
+    command_template: "python3 ./claw_tool {tool_name} @{payload_path}"
+    strict_tool_surface: true
+

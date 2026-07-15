@@ -1,0 +1,19 @@
+model:
+  api_key: ${DEEPSEEK_API_KEY}
+  base_url: http://127.0.0.1:8012/v1
+  model_id: deepseek-v4-pro
+  context_window: 1000000
+  temperature: 0.0
+
+judge:
+  api_key: ${DEEPSEEK_API_KEY}
+  base_url: http://127.0.0.1:8012/v1
+  model_id: deepseek-v4-pro
+  enabled: true
+
+defaults:
+  trace_dir: traces
+  tasks_dir: tasks
+
+sandbox:
+  enabled: false

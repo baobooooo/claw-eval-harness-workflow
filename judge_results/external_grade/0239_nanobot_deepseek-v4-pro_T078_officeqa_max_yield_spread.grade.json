@@ -1,0 +1,54 @@
+{
+  "audit_services": [
+    "ocr_t52"
+  ],
+  "communication": 0.0,
+  "completion": 0.0,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "nanobot",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "The assistant provided only a preliminary plan to extract text from the PDF but did not perform any OCR, data analysis, or yield spread computation. No answer was given, and none of the rubric criteria were met: no spread calculation, no table identification, and no final answer in MMYYYY format.",
+      "rubric_preview": "Evaluate the agent's analytical reasoning in finding the month with maximum yield spread between US corporate Aa bonds and US Treasury bonds during 1960-1969.\nThe correct answer is 031969 (March 1969 in MMYYYY format).\nScore each of the three parts separately, then compute a weighted final score (0-",
+      "score": 0.0,
+      "timestamp": "2026-07-09T15:46:48.782774+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 0.0,
+  "num_dispatches": 12,
+  "num_media_events": 0,
+  "num_messages": 26,
+  "other_time_s": 245.36786199999995,
+  "passed": false,
+  "record_index": 239,
+  "robustness": 0.5,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.0,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 13,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 0.5,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T078_officeqa_max_yield_spread",
+  "task_name": "OfficeQA: Maximum Yield Spread 1960-1969",
+  "task_score": 0.1,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T078_officeqa_max_yield_spread/task.yaml",
+  "tool_time_s": 381.215452,
+  "total_tokens": 0,
+  "trace_id": "converted-live-nanobot-T078_officeqa_max_yield_spread-290fd8542e32",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0239_nanobot_T078_officeqa_max_yield_spread.jsonl",
+  "turns": 13,
+  "wall_time_s": 626.583314
+}

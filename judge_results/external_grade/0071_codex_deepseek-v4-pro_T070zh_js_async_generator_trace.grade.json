@@ -1,0 +1,52 @@
+{
+  "audit_services": [],
+  "communication": 0.0,
+  "completion": 0.0,
+  "env_snapshot_keys": [],
+  "env_snapshot_path": null,
+  "harness": "codex",
+  "judge_call_count": 1,
+  "judge_calls": [
+    {
+      "method": "evaluate",
+      "reasoning": "No assistant response was provided in the conversation. Without any answer to evaluate, all rubric criteria receive zero points.",
+      "rubric_preview": "你正在评估一份关于JavaScript异步生成器与Proxy微任务执行顺序的分析报告。基于以下评分标准逐项打分：\n\n【正向评分项】（满分100%）\n1. [权重15%] 识别scheduler是Thenable对象（有then方法）而非原生Promise — 这是理解await行为的关键\n2. [权重15%] 正确给出同步阶段执行序列：Global:Init → P:A:Start → Sched:Then → P:B:Start → Sched:Then → Global:End\n3. [权重13%] 正确分析微任务调度层级：Promise.resolve().then 与 queueMic",
+      "score": 0.0,
+      "timestamp": "2026-07-09T14:56:54.351728+00:00"
+    }
+  ],
+  "judge_configured": true,
+  "model": "deepseek-v4-pro",
+  "model_input_tokens": 0,
+  "model_output_tokens": 0,
+  "model_time_s": 71.873925,
+  "num_dispatches": 0,
+  "num_media_events": 0,
+  "num_messages": 1,
+  "other_time_s": 71.873925,
+  "passed": false,
+  "record_index": 71,
+  "robustness": 1.0,
+  "safety": 1.0,
+  "scores": {
+    "communication": 0.0,
+    "completion": 0.0,
+    "efficiency_tokens": 0,
+    "efficiency_turns": 0,
+    "efficiency_wall_time_s": 0.0,
+    "robustness": 1.0,
+    "safety": 1.0
+  },
+  "status": "graded",
+  "task_id": "T070zh_js_async_generator_trace",
+  "task_name": "JS异步生成器与微任务执行顺序追踪",
+  "task_score": 0.2,
+  "task_yaml": "/data1/zjq/harness/codex-swebench-qwen3/external/claw-eval/tasks/T070zh_js_async_generator_trace/task.yaml",
+  "tool_time_s": 0.0,
+  "total_tokens": 0,
+  "trace_id": "converted-live-codex-T070zh_js_async_generator_trace-d148bb6c57cb",
+  "trace_model": "deepseek-v4-pro",
+  "trace_path": "/data1/zjq/harness/codex-swebench-qwen3/records/stage2/general161_plus_smoke_20260709_175615_score_ready_resume6core/converted_traces/0071_codex_T070zh_js_async_generator_trace.jsonl",
+  "turns": 0,
+  "wall_time_s": 71.873925
+}

@@ -1,0 +1,14 @@
+agents:
+  defaults:
+    model: deepseek-v4-pro
+    provider: deepseek
+    max_tokens: 32768
+    context_window_tokens: 1000000
+    temperature: 0.1
+    max_tool_iterations: 200
+    timezone: Asia/Shanghai
+providers:
+  deepseek:
+    api_base: http://127.0.0.1:8012/v1
+tools:
+  restrict_to_workspace: true
