@@ -16,7 +16,7 @@ The base model profile used by the experiment is `deepseek-v4-pro`.
 - Harness and benchmark configuration under `configs/`
 - Scripts, schemas, docs, tests, and helper tools
 - External patch code under `external_patches/`
-- Public-safe judge result JSON files under `judge_results/external_grade/`
+- Public-safe aggregate judge result JSONL under `judge_results/external_grade_results.jsonl`
 
 ## Excluded
 
@@ -35,9 +35,8 @@ https://github.com/baobooooo/claw-eval-harness-workflow/releases/tag/workflow-tr
 
 ## Judge Results
 
-`judge_results/external_grade/` contains `.grade.json` files of the same form as:
+`judge_results/external_grade_results.jsonl` contains aggregate judge output rows of the same result schema as:
 
 `0000_codex_deepseek-v4-pro_T009zh_contact_lookup.grade.json`
 
-These are per-instance judge outputs only. Larger judge JSONL files, grader workspaces, task data, and fixtures are not included.
-
+Per-instance `.grade.json` files, grader workspaces, task data, and fixtures are not included.
