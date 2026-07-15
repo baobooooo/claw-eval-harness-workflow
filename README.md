@@ -1,42 +1,16 @@
-# Claw-Eval Harness Workflow
+# Claw-Eval Harness 实验结果位置
 
-Public package for the Claw-Eval harness comparison work.
+## Trajectory
 
-This repository contains the experiment code used to run Claw-Eval through three external harnesses:
+完整 trajectory 在 GitHub Release 资产里：
 
-- `codex`
-- `nanobot`
-- `openclaw`
+- Release 页面：https://github.com/baobooooo/claw-eval-harness-workflow/releases/tag/workflow-traces-20260715
+- 轨迹压缩包：https://github.com/baobooooo/claw-eval-harness-workflow/releases/download/workflow-traces-20260715/claw-eval-harness-workflow.tar.gz
+- SHA256 校验文件：https://github.com/baobooooo/claw-eval-harness-workflow/releases/download/workflow-traces-20260715/claw-eval-harness-workflow.tar.gz.sha256
 
-The base model profile used by the experiment is `deepseek-v4-pro`.
+## Judge 分数
 
-## Included
+Judge 分数在仓库内这个文件：
 
-- Source code under `src/`
-- Harness and benchmark configuration under `configs/`
-- Scripts, schemas, docs, tests, and helper tools
-- External patch code under `external_patches/`
-- Public-safe aggregate judge result JSONL under `judge_results/external_grade_results.jsonl`
-
-## Excluded
-
-The repository intentionally excludes benchmark data and runtime artifacts:
-
-- Claw-Eval datasets and fixtures
-- Agent workspaces
-- Run directories
-- Raw traces and logs
-- Virtual environments and caches
-- Model weights
-
-Full redacted workflow traces are published as a GitHub release asset:
-
-https://github.com/baobooooo/claw-eval-harness-workflow/releases/tag/workflow-traces-20260715
-
-## Judge Results
-
-`judge_results/external_grade_results.jsonl` contains aggregate judge output rows of the same result schema as:
-
-`0000_codex_deepseek-v4-pro_T009zh_contact_lookup.grade.json`
-
-Per-instance `.grade.json` files, grader workspaces, task data, and fixtures are not included.
+- `judge_results/external_grade_results.jsonl`
+- Raw 链接：https://raw.githubusercontent.com/baobooooo/claw-eval-harness-workflow/main/judge_results/external_grade_results.jsonl

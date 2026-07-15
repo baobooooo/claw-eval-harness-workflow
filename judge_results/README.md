@@ -1,11 +1,8 @@
-# Judge Results
+# Judge 分数位置
 
-This directory contains the public-safe aggregate judge output JSONL.
+Judge 分数文件：
 
-Scope:
+- `external_grade_results.jsonl`
+- Raw 链接：https://raw.githubusercontent.com/baobooooo/claw-eval-harness-workflow/main/judge_results/external_grade_results.jsonl
 
-- Source file: `external_grade_results.jsonl`
-- Rows: 483
-- Format: JSONL, one judge result object per line
-
-Per-instance `.grade.json` files were intentionally removed. The benchmark dataset, fixtures, grader workspace, and raw logs are excluded.
+这个 JSONL 文件共有 483 行，每行是一条 judge 结果。
