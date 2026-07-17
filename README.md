@@ -10,17 +10,69 @@ Raw 链接：[https://raw.githubusercontent.com/baobooooo/claw-eval-harness-work
 
 这 161 个任务的结果说明：不存在一个在所有任务类型上都占优的 Harness。三者形成了很明显的能力分工：
 
-Harness	平均分	Pass rate	平均耗时	中位首次工具时间	平均工具调用
-Codex	0.716	60.9%	278 秒	50 秒	17.7
-NanoBot	0.735	63.4%	379 秒	87 秒	28.7
-OpenClaw	0.708	58.4%	472 秒	333 秒	13.7
+统计口径：483 条 `harness × task_id` 结果；timeout 按 VM 原始 `harness_manifest.status == "timeout"` 判定。平均耗时用 `wall_time_s`，单位秒；平均工具调用用实际 dispatched tool 数。
 
-但这个总表容易误导。只看 status=ok 的执行：
+Timeout：共 40 条 harness-run timeout，去重后涉及 29 个 task。
 
-Harness	OK 数量	OK 条件平均分	OK 条件 Pass rate
-Codex	128	0.732	63.3%
-NanoBot	145	0.780	70.3%
-OpenClaw	134	0.784	68.7%
+- codex：5
+- nanobot：13
+- openclaw：22
+
+完整集：
+
+| Harness | N | 平均分 | Pass rate | 平均耗时(s) | 中位首次工具时间(s) | 平均工具调用 |
+|---|---:|---:|---:|---:|---:|---:|
+| codex | 161 | 0.7162 | 60.87% | 278.35 | 49.10 | 17.71 |
+| nanobot | 161 | 0.7348 | 63.35% | 379.27 | 86.42 | 28.66 |
+| openclaw | 161 | 0.7084 | 58.39% | 471.92 | 332.86 | 13.66 |
+
+除去 timeout：
+
+| Harness | N | 平均分 | Pass rate | 平均耗时(s) | 中位首次工具时间(s) | 平均工具调用 |
+|---|---:|---:|---:|---:|---:|---:|
+| codex | 156 | 0.7300 | 62.82% | 267.88 | 49.19 | 17.52 |
+| nanobot | 148 | 0.7736 | 68.92% | 342.07 | 85.42 | 23.43 |
+| openclaw | 139 | 0.7750 | 67.63% | 460.24 | 334.12 | 14.30 |
+
+补充：首次工具时间只对实际发生 tool dispatch 的样本取中位数；完整集中无首次工具样本为 codex 2、nanobot 3、openclaw 6。
+
+按官方 `task.yaml` 的 `difficulty` 分组：
+
+- easy：71 个 task，213 条 harness-run
+- medium：47 个 task，141 条 harness-run
+- hard：43 个 task，129 条 harness-run
+- timeout 总数：40 条 harness-run
+  - easy：19，medium：1，hard：20
+
+**完整集**
+
+| Difficulty | Harness | N | Timeout | 平均分 | Pass rate | 平均耗时(s) | 中位首次工具时间(s) | 平均工具调用 |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| easy | codex | 71 | 3 | 0.7293 | 64.79% | 294.68 | 49.02 | 15.46 |
+| easy | nanobot | 71 | 3 | 0.7716 | 66.20% | 345.06 | 85.42 | 16.58 |
+| easy | openclaw | 71 | 13 | 0.6938 | 52.11% | 601.06 | 338.12 | 14.11 |
+| medium | codex | 47 | 0 | 0.7547 | 61.70% | 223.10 | 46.95 | 15.94 |
+| medium | nanobot | 47 | 1 | 0.8002 | 68.09% | 266.25 | 87.46 | 15.00 |
+| medium | openclaw | 47 | 0 | 0.7872 | 68.09% | 338.28 | 328.50 | 10.87 |
+| hard | codex | 43 | 2 | 0.6525 | 53.49% | 311.78 | 51.46 | 23.37 |
+| hard | nanobot | 43 | 9 | 0.6027 | 53.49% | 559.29 | 86.77 | 63.53 |
+| hard | openclaw | 43 | 9 | 0.6464 | 58.14% | 404.77 | 317.71 | 15.95 |
+
+**除去 timeout**
+
+| Difficulty | Harness | N | 平均分 | Pass rate | 平均耗时(s) | 中位首次工具时间(s) | 平均工具调用 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| easy | codex | 68 | 0.7457 | 67.65% | 282.00 | 49.06 | 14.99 |
+| easy | nanobot | 68 | 0.7834 | 69.12% | 343.59 | 85.74 | 16.09 |
+| easy | openclaw | 58 | 0.7725 | 63.79% | 618.51 | 341.61 | 14.60 |
+| medium | codex | 47 | 0.7547 | 61.70% | 223.10 | 46.95 | 15.94 |
+| medium | nanobot | 46 | 0.8080 | 69.57% | 258.42 | 87.09 | 14.67 |
+| medium | openclaw | 47 | 0.7872 | 68.09% | 338.28 | 328.50 | 10.87 |
+| hard | codex | 41 | 0.6755 | 56.10% | 295.78 | 51.46 | 23.54 |
+| hard | nanobot | 34 | 0.7075 | 67.65% | 452.20 | 81.63 | 49.94 |
+| hard | openclaw | 34 | 0.7622 | 73.53% | 358.85 | 236.55 | 18.53 |
+
+注：中位首次工具时间只统计实际发生 tool dispatch 的样本。
 
 也就是说：
 
